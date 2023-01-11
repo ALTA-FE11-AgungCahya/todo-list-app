@@ -10,7 +10,6 @@ export const Input: FC<Props> = ({ label, id, ...props }) => {
     <div>
       <input
         id={id}
-        type="text"
         placeholder="What do you want to do ?"
         className="input input-bordered w-[90%] mx-2 ml-5"
         {...props}
