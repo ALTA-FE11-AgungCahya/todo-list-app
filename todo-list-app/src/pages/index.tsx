@@ -81,15 +81,6 @@ const App = () => {
           </p>
 
           {datas.map((data) => (
-            // <div
-            //   key={data.id}
-            //   className="p-2 mb-2 w-full bg-slate-400 gap-2 flex flex-col"
-            // >
-            //   <p className="break-words">{data.content}</p>
-            //   <Button label="Edit" />
-            //   <Button label="Hapus" />
-            // </div>
-
             <table
               key={data.id}
               className="table-fixed  bg-zinc-50 w-full   border-b-2"
@@ -104,15 +95,18 @@ const App = () => {
               <tbody>
                 <tr>
                   <td className="break-words">{data.content}</td>
-                  <td>Malcolm Lockyer</td>
-                  <td>1961</td>
+                  <td>Incomplete</td>
+                  <td className="grid lg:grid-cols-3 md:grid-cols-2">
+                    <Button label="Edit" />
+                    <Button label="Hapus" />
+                  </td>
                 </tr>
               </tbody>
             </table>
           ))}
         </div>
 
-        {datas.map((data) => (
+        {/* {datas.map((data) => (
           <div
             key={data.id}
             className="p-2 mb-2 w-full bg-slate-400 gap-2 flex flex-col"
@@ -121,7 +115,7 @@ const App = () => {
             <Button label="Edit" />
             <Button label="Hapus" />
           </div>
-        ))}
+        ))} */}
       </div>
     </Layout>
   );
