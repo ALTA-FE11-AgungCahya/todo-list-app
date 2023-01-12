@@ -59,7 +59,9 @@ const App = () => {
       })
       .then((res) => {
         // console.log(res);
-        setDatas(res.data);
+        let dupeDatas: TodosType[] = datas.slice();
+        const filterData = dupeDatas.filter((item) => item.content !== todo.id);
+        setDatas(filterData);
       })
       .catch((err) => {
         console.log(err);
