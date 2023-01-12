@@ -113,7 +113,11 @@ const App = () => {
                   <td>Incomplete</td>
                   <td className="grid lg:grid-cols-3 md:grid-cols-2">
                     <Button label="Edit" />
-                    <Button label="Hapus" onClick={() => HandleDeleteTask} />
+                    <Button
+                      className="bg-red-600"
+                      label="Hapus"
+                      onClick={() => HandleDeleteTask}
+                    />
                   </td>
                 </tr>
               </tbody>
