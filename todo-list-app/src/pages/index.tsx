@@ -4,7 +4,6 @@ import axios from "axios";
 import { Input } from "../components/input";
 import Button from "../components/button";
 import Layout from "../components/layout";
-import Table from "../components/table";
 
 import { TodosType } from "../utils/types/todo";
 
@@ -20,7 +19,7 @@ const App = () => {
     axios
       .get(" https://api.todoist.com/rest/v2/tasks", {
         headers: {
-          Authorization: "Bearer 051e502191577226155fed5e92ef50647cdae04d",
+          Authorization: `Bearer ${import.meta.env.VITE_TODO_API}`,
         },
       })
       .then((res) => {
@@ -39,7 +38,7 @@ const App = () => {
     axios
       .post("https://api.todoist.com/rest/v2/tasks", body, {
         headers: {
-          Authorization: "Bearer 051e502191577226155fed5e92ef50647cdae04d",
+          Authorization: `Bearer ${import.meta.env.VITE_TODO_API}`,
         },
       })
       .then((res) => {
@@ -49,6 +48,22 @@ const App = () => {
         console.log(err);
       })
       .finally(() => fetchData());
+  }
+
+  function HandleDeleteTask(todo: TodosType) {
+    axios
+      .delete("https://api.todoist.com/rest/v2/tasks", {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_TODO_API}`,
+        },
+      })
+      .then((res) => {
+        // console.log(res);
+        setDatas(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -98,24 +113,13 @@ const App = () => {
                   <td>Incomplete</td>
                   <td className="grid lg:grid-cols-3 md:grid-cols-2">
                     <Button label="Edit" />
-                    <Button label="Hapus" />
+                    <Button label="Hapus" onClick={() => HandleDeleteTask} />
                   </td>
                 </tr>
               </tbody>
             </table>
           ))}
         </div>
-
-        {/* {datas.map((data) => (
-          <div
-            key={data.id}
-            className="p-2 mb-2 w-full bg-slate-400 gap-2 flex flex-col"
-          >
-            <p className="break-words">{data.content}</p>
-            <Button label="Edit" />
-            <Button label="Hapus" />
-          </div>
-        ))} */}
       </div>
     </Layout>
   );
