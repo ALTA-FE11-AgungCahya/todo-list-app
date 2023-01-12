@@ -114,7 +114,7 @@ const App = () => {
                   <td className="grid lg:grid-cols-3 md:grid-cols-2">
                     <Button label="Edit" />
                     <Button
-                      className="bg-red-600"
+                      className=" w-[90px] h-9 rounded-xl text-zinc-50 bg-red-500 border-none tracking-wider normal-case mt-2"
                       label="Hapus"
                       onClick={() => HandleDeleteTask}
                     />
